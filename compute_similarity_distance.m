@@ -1,4 +1,4 @@
-function [ similarity ] = compute_similarity2( case1, case2 )
+function [ similarity ] = compute_similarity_distance( case1, case2 )
 %COMPUTE_SIMILARITY2 computes similarity based on euclidean distance
 %   Detailed explanation goes here
 attributes1 = zeros(1,45);

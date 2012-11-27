@@ -1,4 +1,4 @@
-function [ similarity ] = compute_similarity1( case1, case2 )
+function [ similarity ] = compute_similarity_length( case1, case2 )
 %COMPUTE_SIMILARITY Summary of this function goes here
 %   Detailed explanation goes here
 
