@@ -11,8 +11,5 @@ for i = 1 : length(case2.au_vector)
 end
 
 distance = pdist([attributes1;attributes2]);
-if distance == 0
-    similarity = 1;
-else
-    similarity = 1/distance;
+similarity = 1/(distance+eps);
 end
