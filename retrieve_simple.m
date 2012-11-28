@@ -1,27 +1,27 @@
-function [ matched_case ] = retrieve_simple( cbr, new_case )
-%RETRIEVE_SIMPLE Summary of this function goes here
-%   Detailed explanation goes here
-similarity = 0;
+function [ matched_case ] = retrieve_simple( cbr, new_case, sim_fun_num )
+similarity   = 0;
+matched_case = [];
 
 for i = 1 : length(cbr)
-    this_similarity = compute_similarity_distance(cbr(i), new_case);
+    handle = get_sim_function(sim_fun_num);  
+    this_similarity = handle(cbr(i), new_case);
+    
     if this_similarity > similarity
-        matched_cases = cbr(i);
-        similarity = this_similarity;
+        matched_case  = cbr(i);
+        similarity    = this_similarity;
     elseif this_similarity == similarity
-        matched_cases = [ matched_cases, cbr ];
+        matched_case = get_typical_case([ matched_cases, cbr ]);
     end
-end
-if length(matched_cases)==1
-    matched_case = matched_cases;
-else
-    matched_case = get_typical_case(matched_cases);
+    
 end
 end
 
 function [ typical_case ] = get_typical_case( cases )
-typicality = Inf;
-    for i = 1 : length(cases)
+typicality   = cases(1).typicality;
+typical_case = cases(1);
+
+%In event of a single element list will just return the head
+    for i = 2 : length(cases) - 1
         if cases(i).typicality < typicality
             typical_case = cases(i);
             typicality = cases(i).typicality;
