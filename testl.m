@@ -7,6 +7,8 @@ for i = 601 : length(x)
     output_args(i-600, 1) = retrieved.solution;
     temp = y(i);
     output_args(i-600, 2) = temp;
+    c1 = reuse(retrieved, c1);
+    cbr = retain(cbr, c1);
 end
 
 end
