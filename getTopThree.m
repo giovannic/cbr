@@ -5,7 +5,7 @@ function [ cases ] = getTopThree( heap )
     if (isempty(kids))
         kid_cases = [];
     else
-        kid_cases = [kids.case];
+        kid_cases = [kids{1}.case, kids{2}.case];
     end
     cases = [heap.case,kid_cases];
 end
