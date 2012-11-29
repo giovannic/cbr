@@ -6,4 +6,3 @@ cbr_case.solution = label;
 cbr_case.typicality = 1;
 
 end
-
