@@ -10,6 +10,8 @@ function [ similarity ] = compute_similarity_distance( case1, case2 )
         attributes2(case2.au_vector(i)) = 1;
     end
 
+
     distance = pdist([attributes1;attributes2]);
-    similarity = 1/(distance+eps);
+    similarity = distance/sqrt(45);
+
 end

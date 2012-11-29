@@ -1,4 +1,4 @@
-function [ cbr ] = retain( cbr, case_to_add )
+function [ cbr ] = retain_simple( cbr, case_to_add )
 %UNTITLED5 Summary of this function goes here
 %   Detailed explanation goes here
 
