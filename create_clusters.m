@@ -5,5 +5,8 @@ function [ clusters ] = create_clusters(cell_au, targets)
         clusters{targets(i)} = [clusters{targets(i)}; cell_au(i)];
     end
     
+    for i = 1:length(clusters)
+       clusters{i} = create_cluster_cases(clusters{i}, i); 
+    end
 end
 
