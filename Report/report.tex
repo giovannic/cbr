@@ -93,10 +93,37 @@ never equal, therefore there are no two best matches.
 
 \subsection{Discuss what happens if you try to add a case to CBR system that is already there (either in the initialisation phase or when you call the retain function? How did you deal with this issue?}
 
-When we try to add a case that is already in the system, if the solution is actually different,
-we simply add that case to cluster for the new solution. 
+If we add a duplicate value, we recompute the similarities for all elements in that cluster.
+For all elements in that cluster, we multiply current average similarity by n, 
+the number of items in the structure, and add
+the similarity with the duplicate node, before dividing by n+1. This ensures the duplicate
+value is taken into account whilst not wasting space in the cluster.
 
 \subsection{Compare the different similarity measures you have used (at least three). What are the advantages / disadvantages of each measure?}
+
+The similarity measures we used are: length of AU vector, euclidean distance between points, 
+cosine similarity.
+
+We thought length of AU vector was a fairly poor measure of similarity -- though it was the
+quickest and simplest measure to calculate, it would have very poor accuracy. This can be seen
+by comparing the AU vectors [1..22] and [23..44]. These two cases are clearly very
+dissimilar in terms of AUs enabled, only matching on 1 feature, however their lengths are
+the same so there would be a high similarity given to these two vectors.
+
+Euclidean distance is a measure we thought would give a high similarity accuracy. It
+effectively plots the points of the AU vectore represented as a bit array
+on an n-dimensional graph and calculates the
+distance between them. This is the method used in numerous published books and papers
+to find the nearest neighbours of a point so we assumed it would be a good measure of
+similarity. We were surprised to find that the euclidean distance actually performed 
+worse than other measures (e.g. cosine similarity). This could be put down to the effect
+noise could have on the distance the points are from each other.
+
+Cosine similarity works by calculating the cosine of the angle between the two AU vectors
+(represented as a bit array). This measure is valuable in systems which must 
+`measure cohesion within clusters in the field of data mining'. The cosine similarity
+seems to work exceptionally well, giving a high accuracy rating (as seen elsewhere in this
+report)
 
 \subsection{Describe how you initialise your CBR system.}
 
