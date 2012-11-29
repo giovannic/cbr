@@ -21,8 +21,8 @@ typicality   = cases(1).typicality;
 typical_case = cases(1);
 
 %In event of a single element list will just return the head
-    for i = 2 : length(cases) - 1
-        if cases(i).typicality < typicality
+    for i = 2 : length(cases)
+        if cases(i).typicality > typicality
             typical_case = cases(i);
             typicality = cases(i).typicality;
         end
