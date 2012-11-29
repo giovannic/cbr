@@ -88,13 +88,30 @@ Classification Rate: 0.0000
 
 \subsection{How did you solve the problem of finding two or more best matches with different labels in function RETRIEVE?}
 
+Our chosen similarity measure returns a floating point number which means 2 similarities are 
+never equal, therefore there are no two best matches.
+
 \subsection{Discuss what happens if you try to add a case to CBR system that is already there (either in the initialisation phase or when you call the retain function? How did you deal with this issue?}
+
+When we try to add a case that is already in the system, if the solution is actually different,
+we simply add that case to cluster for the new solution. 
 
 \subsection{Compare the different similarity measures you have used (at least three). What are the advantages / disadvantages of each measure?}
 
 \subsection{Describe how you initialise your CBR system.}
 
 \subsection{CBR belongs to a specific class of learning algorithms? How are these algorithms called and what are the differences with other learning algorithms, like neural networks and decision trees?}
+
+CBR belongs to the lazy learning class of learning algorithms. This means that, unlike eager
+learning algorithms, CBR systems don't generate a global hypothesis of the target function at
+creation time, but rather generate local hypotheses of the function each time a new case is
+presented. This results in lazy methods requiring less computation when training, but more
+when a new case is passed in. Further to this, and perhaps more crucially, because eager
+algorithms estimate the target function without knowledge of new cases, it is unable to tailor
+the hypothesis to any new cases. By comparison, a lazy learning algorithm has the new case
+available, thus it is able to create a hypothesis for the target function that is specifically
+suited to this new case. Lazy learning is able to choose multiple different hypotheses out of
+the hypthesis space dependant on the input, whereas eager is fixed to its single hypothesis.
 
 
 \section{Code Flow Charts}
