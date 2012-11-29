@@ -1,0 +1,102 @@
+\documentclass[11pt]{article}
+\usepackage{a4, fullpage}
+\usepackage{bibtopic}
+\usepackage[small,compact]{titlesec}
+\usepackage{float}
+\usepackage{amssymb,amsmath}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{multicol}
+\restylefloat{table}
+%\usepackage{parskip}
+%\usepackage{setspace}
+
+
+
+
+\setlength{\parskip}{0.3cm}
+\setlength{\parindent}{0cm}
+\setlength{\textheight}{10in}
+\setlength{\textwidth}{6.5in}
+\setlength{\parskip}{2pt}
+\addtolength{\oddsidemargin}{-.3in}
+\addtolength{\evensidemargin}{-.3in}
+\addtolength{\topmargin}{-.6in}
+\addtolength{\textwidth}{.6in}
+
+\begin{document}
+
+
+
+\title{Assignment 4\\ Case Based Reasoning \\ Group 30  }
+
+\author{John Walker \and Adam Fiksen \and Giovanni Charles }
+
+\date{\today}         % inserts today's date
+
+\maketitle           % generates the title from the data above
+
+
+\section{Results}
+% Confuction matrices (for both types of networks)
+% Average classification rate and recall, precision and F1 measures per class (part VIII).
+
+\subsection{Confusion Matricies}
+
+\begin{table}[H]
+\caption{Average Confusion Matrix} % title of Table
+\centering % used for centering table
+\begin{tabular}{c c c c c c} % centered columns (4 columns)
+\hline % inserts single horizontal line
+0  & 0   & 0   & 0   & 0  & 0   \\ % inserting body of the table
+0  & 0   & 0   & 0   & 0  & 0   \\
+0  & 0   & 0   & 0   & 0  & 0   \\
+0  & 0   & 0   & 0   & 0  & 0   \\
+0  & 0   & 0   & 0   & 0  & 0   \\ 
+0  & 0   & 0   & 0   & 0  & 0 \\ [1ex] % [1ex] adds vertical space
+\hline %inserts single line
+\end{tabular}
+\label{table:conf} % is used to refer this table in the text
+\end{table}
+
+
+\subsection{Average Classification Rate, Recall Precision and F1 Measures}
+
+\begin{table}[H]
+\caption{Average Evaluation Results} % title of Table
+\centering % used for centering table
+\begin{tabular}{c c c c c} % centered columns (4 columns)
+\hline\hline %inserts double horizontal lines
+Emotion & name & Precision rate & Recall rate & f1 measure\\ [0.5ex] % inserts table
+\hline % inserts single horizontal line
+1 & anger     & 0 & 0 & 0\\ % inserting body of the table
+2 & disgust   & 0 & 0 & 0\\
+3 & fear      & 0 & 0 & 0\\
+4 & happiness & 0 & 0 & 0\\
+5 & sadness   & 0 & 0 & 0\\ 
+6 & suprise   & 0 & 0 & 0\\ [1ex] % [1ex] adds vertical space
+\hline %inserts single line
+\end{tabular}
+\label{table:sixevaluation} % is used to refer this table in the text
+\end{table}
+
+Classification Rate: 0.0000
+
+
+\section{Implementation Details}
+\section{Questions}
+
+\subsection{How did you solve the problem of finding two or more best matches with different labels in function RETRIEVE?}
+
+\subsection{Discuss what happens if you try to add a case to CBR system that is already there (either in the initialisation phase or when you call the retain function? How did you deal with this issue?}
+
+\subsection{Compare the different similarity measures you have used (at least three). What are the advantages / disadvantages of each measure?}
+
+\subsection{Describe how you initialise your CBR system.}
+
+\subsection{CBR belongs to a specific class of learning algorithms? How are these algorithms called and what are the differences with other learning algorithms, like neural networks and decision trees?}
+
+
+\section{Code Flow Charts}
+
+\end{document}
