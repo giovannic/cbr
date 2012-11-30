@@ -5,8 +5,14 @@ cluster_cell_array = create_clusters(exam_to_au(x), y);
 %sim_rankings = inital_ranking(cluster_cell_array);
 cluster_cell_array = inital_ranking(cluster_cell_array);
 
-for i = 1:length(cluster_cell_array)
-    cluster_cell_array{i} = remove_duplicate_cases(cluster_cell_array{i});
+
+for i = 1:length(sim_rankings)
+    cbr_system.clusters{i} = [];
+    cluster                = cluster_cell_array{i};
+    rankings               = sim_rankings{i};
+    for j = 1:length(cluster);
+        cbr_system.clusters{i} = insert_heap(cbr_system.clusters{i}, cluster(j), rankings(j)); 
+    end
 end
 
 cbr_system.num_tiers = 3;

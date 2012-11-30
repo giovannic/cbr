@@ -8,7 +8,7 @@ for i = 1:length(cluster_cell_array)
    % averages      = zeros(length(cluster), 1);
     for j = 1:length(cluster)
        for k = (j + 1):length(cluster)
-           sim_matrix(j, k) = compute_similarity_distance(cluster(j), cluster(k));
+           sim_matrix(j, k) = compute_similarity_cosine(cluster(j), cluster(k));
            sim_matrix(k, j) = sim_matrix(j, k);
        end
      %  averages(j, 1) = sum(sim_matrix(j,:)) / (length(cluster) - 1);
