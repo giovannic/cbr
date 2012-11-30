@@ -1,6 +1,6 @@
 function [ rankings ] = inital_ranking(cluster_cell_array)
 
-rankings      = {[], [], [], [], [], []};
+rankings = cell(6,1);
 
 for i = 1:length(cluster_cell_array) 
     cluster       = cluster_cell_array{i};
