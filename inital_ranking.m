@@ -1,5 +1,6 @@
 function [ cluster_cell_array ] = inital_ranking(cluster_cell_array)
 
+
 %rankings      = {[], [], [], [], [], []};
 
 for i = 1:length(cluster_cell_array) 
