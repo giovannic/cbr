@@ -17,8 +17,8 @@ for fold = 1:folds,
     test_x = x(s:e,:);
     train_targets = y;
     train_targets(s:e) = [];
-    cbr = CBRinit(train_x, train_targets);
-    p = testCBR(t, test_x);
+    cbr = CBRinit(train_x, train_targets, 10);
+    p = testCBR(cbr, test_x);
     predictions(s:e) = p;
 end
 
