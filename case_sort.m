@@ -15,4 +15,3 @@ cell_array_ver = reshape(cell_array_ver', cell_size);
 sorted_cases = cell2struct(cell_array_ver, fields, 1);
 
 end
-
