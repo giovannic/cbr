@@ -9,7 +9,7 @@ for i = 1:length(cluster_cell_array)
 
     layer1 = repmat(cluster', length(cluster), 1);
     layer2 = repmat(cluster, 1, length(cluster));
-    sim_matrix  = arrayfun(@(x, y) compute_similarity_cosine(x , y), layer1, layer2);
+    sim_matrix  = arrayfun(@(x, y) compute_similarity_jaccard(x , y), layer1, layer2);
        
    
     average_sims = (sum (sim_matrix, 2) - 1) / (length(cluster) - 1);
