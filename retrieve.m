@@ -13,7 +13,7 @@ function [ cbr_case ] = retrieve( new_case, cbr )
     level = 0;
     
     %similarity function
-    sim = @(c) (compute_similarity_cosine(c, new_case));
+    sim = @(c) (compute_similarity_jaccard(c, new_case));
     
     %initialise
     for c = 1:length(cbr.clusters)
