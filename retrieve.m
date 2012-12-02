@@ -1,10 +1,10 @@
 function [ cbr_case ] = retrieve( new_case, cbr )
 %inserts case to cluster and updates similarities
     %set threshold
-    t = 0.7;
+    t = 0.9;
     
     %set k
-    k = 10;
+    k = 5;
     topK = [];
     
     top_size = cbr.initial_tier_size;
