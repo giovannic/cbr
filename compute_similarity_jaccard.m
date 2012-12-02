@@ -10,8 +10,9 @@ function [ similarity ] = compute_similarity_jaccard( case1, case2 )
     for i = 1 : length(case2.au_vector)
         attributes2(case2.au_vector(i)) = 1;
     end
-    
-    similarity = length(and(attributes1, attributes2))/length(or(attributes1, attributes2));
+    atts_and = and(attributes1, attributes2);
+    atts_or = or(attributes1, attributes2);
+    similarity = length(atts_and(atts_and==1))/length(atts_or(atts_or==1));
 
 end
 
