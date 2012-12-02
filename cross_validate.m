@@ -20,7 +20,7 @@ for i = 1:num_folds
     r2 = removerows(examples, 'ind', r2.keep_ind);
     
     
-    cbr = CBRinit(r1, r3, 10);
+    cbr = CBRinit(r1, r3, 20);
     p   = testCBR(cbr, r2);
     
     predictions = [predictions; p];
