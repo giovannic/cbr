@@ -90,7 +90,7 @@ A CBR system structure encompasses the following elements
 \item{Integer:                            First tier size}
 \item{1 x 6 Vector of Integer:            Cluster sizes  }
 \item{1 x 6 Cell Array of Case Vectors:   Clusters       }
-\end{itemize}
+\section{Questions}
 
 One of the major problems with CBR system is that they become very large therefore the retriving of data becomes a costly process.
 To reduce the search space we decided to split it into clusters which encompass similar cases. These clusters will contain an ordered vector of cases (ordered based on their generality). This ordered vector is then divided into tiers which are used to cluster comparrison (it's not actually physically divided but it's useful to picture it that way), the inital tier size attribute of the CBR system denotes the size of the first tier and then tier size doubles each time to encompass the whole list.
@@ -99,20 +99,22 @@ When an unknown case is presented to the system retrieve is called. Retrieve fin
 
 Retrieve also reduces the search space and generality by performing this calculation in tiers. It begins calculating the top k cases at the top teir, where the most general cases are stored, and removes clusters where the average similarity is too far below the most similar cluster. It then moves on to the next tier, doubles the number of cases in a tier and repeats the last step until one cluster is left or there are no more cases to compare. Once the search is finished the case is matched as explained in the previous paragraph. 
 
-Further Details of the system can be found in question 4 and diagrams can be found in the code flow section.
+Further Details of the system can be found in question 4.
+
+%Picture of the CBR system diagram
 
 A case encompasses the following elements
 \begin{itemize}
 \item{AU vector:   AU vector         }
 \item{Integer:     Solution          }
 \item{Double:      Average Similarity}
-\end{itemize}
+\section{Questions}
 
 All of these values are set and explained in Question 4.
 
 \section{Questions}
 
-\subsection{How did you solve the problem of finding two or more best matches with different labels in function retrieve?}
+\subsection{How did you solve the problem of finding two or more best matches with different labels in function RETRIEVE?}
 
 We reduce the chances of having two or more indistinguishable labels by using k nearest neighbours. In the case where matched case is common to two of our clusters we will pick the cluster with the highest sum of the similarities in the top k nearest neighbours. In the unlikely event that these are the same a cluster is chosen arbitrarily since it is likely to fit in well in any of the best matching clusters.
 
@@ -155,11 +157,14 @@ report)
 % FINE
 
 \subsection{Describe how you initialise your CBR system.}
-CBRinit is passed a list of examples, a list of cases and a integer representing the number of tiers (see implementation details). The examples are then turned into AU vectors by exam\_to\_au the au vectors and targets are then passed to a function called create\_clusters. create\_clusters simply creates a 1 x 6 cell array which will contain lists of cases and then splits the AU examples into these 'clusters' dependant unpon which emotion they map too, e.g all AU vectors with target 1 go to the first list in the cell array etc. They are then passed into a function with turns them into cases, it sets their solution equal to their cluster index (the emotion they map to) and their AU vector equal to themselves (as they're passed in as AU vectors).
+CBRinit is passed a list of examples, a list of cases and a integer representing the number of tiers (see implementation details). The examples are then turned into AU vectors by exam_to_au() the au vectors and targets are then passed to a function called create_clusters. create_clusters simply creates a 1 x 6 cell array which will contain lists of cases and then splits the AU examples into these 'clusters' dependant unpon which emotion they map too, e.g all AU vectors with target 1 go to the first list in the cell array etc. They are then passed into a function with turns them into cases, it sets their solution equal to their cluster index (the emotion they map to) and their AU vector equal to themselves (as they're passed in as AU vectors).
 
-This cell array is then passed to inital\_ranking. inital\_ranking iterates through every cluster in the cell array and compares every case in it to every other case in the cluster (except itself) using our chosen similarity measure. The average of these similarity measures are then calculated and assigned to each case as 'average similarity' this represents how general that case. Each cluster then has its duplicates removed and is orderd according to the generality of it's cases as calculated in inital\_ranking. 
+This cell array is then passed to inital_ranking. inital_ranking iterates through every cluster in the cell array and compares every case in it to every other case in the cluster (except itself) using our chosen similarity measure. The average of these similarity measures are then calculated and assigned to each case as 'average similarity' this represents how general that case. Each cluster then has its duplicates removed and is orderd according to the generality of it's cases as calculated in inital_ranking. 
 
 This cell array of clusters is then inserted into a newly created CBR system along with the inital size of each cluster (before duplicated were removed) the inital tier size is also added to the CBR system and it is complete.
+
+\includegraphics[width=\linewidth]{init.png}
+\includegraphics[width=\linewidth]{cbrdiagram.png}
 
 \subsection{CBR belongs to a specific class of learning algorithms? How are these algorithms called and what are the differences with other learning algorithms, like neural networks and decision trees?}
 
@@ -178,12 +183,7 @@ the hypthesis space dependant on the input, whereas eager is fixed to its single
 
 \section{Code Flow Charts}
 
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{init.png}
-\newpage %hack hack hack hack
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{cbrdiagram.png}
-\newpage
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{retrieve.png}
-\newpage
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{retain.png}
+\includegraphics[width=\linewidth]{retrieve.png}
+\includegraphics[width=\linewidth]{retain.png}
 
 \end{document}
