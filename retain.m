@@ -6,7 +6,7 @@ cluster = cbr.clusters{emotion};
 n = cbr.cluster_sizes(emotion);
 solved_case.average_sim = 0;
 for i = 1 : length(cluster)
-    this_sim = compute_similarity_jaccard(solved_case, cluster(i));
+    this_sim = compute_similarity_cosine(solved_case, cluster(i));
     cluster(i).average_sim = (cluster(i).average_sim*(n-1)+this_sim)/n;
     solved_case.average_sim = solved_case.average_sim + this_sim;
 end
