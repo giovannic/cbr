@@ -95,10 +95,9 @@ A CBR system structure encompasses the following elements
 One of the major problems with CBR system is that they become very large therefore the retriving of data becomes a costly process.
 To reduce the search space we decided to split it into clusters which encompass similar cases. These clusters will contain an ordered vector of cases (ordered based on their generality). This ordered vector is then divided into tiers which are used to cluster comparrison (it's not actually physically divided but it's useful to picture it that way), the inital tier size attribute of the CBR system denotes the size of the first tier and then tier size doubles each time to encompass the whole list.
 
-When an unknown case is presented to the system ....
+When an unknown case is presented to the system retrieve is called. Retrieve finds the k nearest neighbours, weighted using the similarity measure, from all the clusters and matches the most similar case from the cluster with the best score. 
 
-% GIO OR ADAM Continue talk about how to find/why we do it with k-nn etc I don't know the actual details and how it reduces
-% the search space etc
+Retrieve also reduces the search space and generality by performing this calculation in tiers. It begins calculating the top k cases at the top teir, where the most general cases are stored, and removes clusters where the average similarity is too far below the most similar cluster. It then moves on to the next tier, doubles the number of cases in a tier and repeats the last step until one cluster is left or there are no more cases to compare. Once the search is finished the case is matched as explained in the previous paragraph. 
 
 Further Details of the system can be found in question 4.
 
@@ -117,13 +116,7 @@ All of these values are set and explained in Question 4.
 
 \subsection{How did you solve the problem of finding two or more best matches with different labels in function RETRIEVE?}
 
-Our chosen similarity measure returns a floating point number which means 2 similarities are 
-never equal, therefore there are no two best matches. 
-
-%IS THIS REALLY TRUE?
-% x = 0.6721 y = 0.6721        x == y = 1
-% x = 5/14   y = 5/14          x == y = 1
-%I believe this definitely could be possible
+We reduce the chances of having two or more indistinguishable labels by using k nearest neighbours. In the case where matched case is common to two of our clusters we will pick the cluster with the highest sum of the similarities in the top k nearest neighbours. In the unlikely event that these are the same a cluster is chosen arbitrarily since it is likely to fit in well in any of the best matching clusters.
 
 \subsection{Discuss what happens if you try to add a case to CBR system that is already there (either in the initialisation phase or when you call the retain function? How did you deal with this issue?}
 
@@ -133,8 +126,7 @@ the number of items in the structure, and add
 the similarity with the duplicate node, before dividing by n+1. This ensures the duplicate
 value is taken into account whilst not wasting space in the cluster.
 
-%Talk about how this affects K-nn we're find because it's weighted etc why we decided to remove duplicates but change
-%average similarity again I know the outline but not the details
+This means that cases that have appeared multiple times will have a higher weighting when computing the winning label but will not overcrowd the list of the top k cases since it only appears once in each cluster, allowing other cases to be represented.
 
 \subsection{Compare the different similarity measures you have used (at least three). What are the advantages / disadvantages of each measure?}
 
