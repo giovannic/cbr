@@ -152,6 +152,13 @@ Cosine similarity works by calculating the cosine of the angle between the two A
 seems to work exceptionally well, giving a high accuracy rating (as seen elsewhere in this
 report)
 
+We also implemented a Jaccard similarity measure, which computes the number of positive attributes
+when the 2 cases are ANDed, divided by the number of positive attributes when the 2 cases are ORed.
+We were hopeful this would prove to be a good similarity measure, as it is intended to be
+used when finding the binary differences (or similarities) between two objects. It did prove
+to give a good accuracy however cosine similarity gave a better fit so we opted with that in
+the final submission.
+
 % FINE
 
 \subsection{Describe how you initialise your CBR system.}

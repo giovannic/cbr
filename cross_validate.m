@@ -12,7 +12,6 @@ stop_test_data  = fold_size;
 results = [];
 
 for i = 1:num_folds
-    i
     [r1, r2] = removerows(examples, 'ind', [start_test_data:stop_test_data]);
     [r3, r4] = removerows(targets, 'ind', [start_test_data:stop_test_data]);   
         
