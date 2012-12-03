@@ -1,4 +1,4 @@
-function [ cbr_case ] = retrieve( new_case, cbr )
+function [ cbr_case ] = retrieve( cbr, new_case )
 %inserts case to cluster and updates similarities
     %set threshold
     t = 0.9;

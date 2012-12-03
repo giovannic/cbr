@@ -1,6 +1,6 @@
-function [ cbr ] = CBRinit( x, y, n )
+function [ cbr ] = CBRinit( x, y )
 
-cbr.initial_tier_size = n;
+cbr.initial_tier_size = 10;
 
 %Given x examples and y targets lets create clusters
 cbr.clusters = create_clusters(exam_to_au(x), y);
